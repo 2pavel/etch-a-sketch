@@ -1,0 +1,42 @@
+h1 {
+    width: 100%;
+    left: 50%;
+    margin: 0;
+    text-align: center;
+    padding: 5px;
+}
+
+body{
+    height: 90vh;
+    width: 99%;
+    margin: 0px;
+    padding: 0px;
+}
+main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#palette{
+    width: 19%;
+    height: 100%;
+    text-align: center;
+}
+
+#painting{
+    display: grid;
+    width: 60%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#pixels{
+    width: 19%;
+    height: 100%;
+    text-align: center;
+}
