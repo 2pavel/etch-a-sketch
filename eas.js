@@ -4,10 +4,7 @@ let row = 1;
 let column = 1;
 
 function changeColor(e) {
-    usercolor = e.target.id;
-    removeEventListener('mouseover', () => {
-        div.style.backgroundColor = randomColor();
-    });
+    usercolor = e.target.id;    
 }
 function randomColor(){
     var letters = '0123456789ABCDEF';
@@ -24,7 +21,15 @@ function rainbow() {
         });
     });
 }
+function shading() {
+	let x = this.getAttribute("stage");
 
+	if (x <= 5) {
+		this.style.backgroundColor = "hsl(0, 0%, " + (80-15*x) +"%)";
+		x++;
+        this.setAttribute("stage", x);
+    }
+}
 function clear(){
     let erase = document.querySelectorAll('.pixel');
     erase.forEach((e) => {
@@ -76,7 +81,11 @@ randombtn.addEventListener('click', () => {
 });
 
 rainbowbtn.addEventListener('click', rainbow);
-
+pencilbtn.addEventListener('click', (e) => {
+    pixels.forEach((div) => {
+        div.addEventListener('mouseover', shading);
+    });
+});
 
 let clearbtn = document.getElementById('clearbtn');
 clearbtn.addEventListener('click', clear);
