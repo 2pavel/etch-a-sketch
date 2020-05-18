@@ -2,9 +2,11 @@ const painting = document.querySelector('#painting');
 let rows = 64;
 let row = 1;
 let column = 1;
+let usercolor = 'black';
 
 function changeColor(e) {
-    usercolor = e.target.id;    
+    usercolor = e.target.id;
+    console.log(usercolor);  
 }
 function randomColor(){
     var letters = '0123456789ABCDEF';
@@ -21,28 +23,18 @@ function rainbow() {
         });
     });
 }
-function shading() {
-	let x = this.getAttribute("stage");
-
-	if (x <= 5) {
-		this.style.backgroundColor = "hsl(0, 0%, " + (80-15*x) +"%)";
-		x++;
-        this.setAttribute("stage", x);
-    }
-}
 function clear(){
     let erase = document.querySelectorAll('.pixel');
     erase.forEach((e) => {
         e.style.backgroundColor = 'white';
     });
 }
-
 function fillPainting() {
 
     for(let i = 0; i < rows * rows; i++) {
         let creatediv = document.createElement('div');
         creatediv.addEventListener('mouseover', () => {
-            creatediv.style.backgroundColor = 'black';
+            creatediv.style.backgroundColor = usercolor;
         });
         creatediv.classList.add(`pixel`);
         creatediv.style.backgroundColor = 'white';
@@ -57,12 +49,12 @@ function fillPainting() {
         
     }
 }
-let usercolor = 'black';
 let pencilbtn = document.getElementById('pencil');
 let randombtn = document.getElementById('randomclr');
 let colorbtns = document.querySelectorAll('.colorbtn');
 let rainbowbtn = document.getElementById('rainbow');
 let allbuttons = document.querySelectorAll('button');
+let currentcolor = document.getElementById('currentcolor');
 
 fillPainting();
 
@@ -81,10 +73,13 @@ randombtn.addEventListener('click', () => {
 });
 
 rainbowbtn.addEventListener('click', rainbow);
-pencilbtn.addEventListener('click', (e) => {
+
+painting.addEventListener('mouseleave', () => {
     pixels.forEach((div) => {
-        div.addEventListener('mouseover', shading);
-    });
+        div.addEventListener('mouseover', (e) => {
+        div.style.backgroundColor = usercolor;
+        });
+    });    
 });
 
 let clearbtn = document.getElementById('clearbtn');

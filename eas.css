@@ -82,6 +82,14 @@ button:hover{
     z-index: 90;
     right: 50px;
 }
+#currentcolor {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    border: 2px solid rgb(148, 3, 39);
+    border-radius:  8px;
+}
 
 .pixel{
     
